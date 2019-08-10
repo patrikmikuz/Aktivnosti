@@ -1,0 +1,83 @@
+% rebase('base.html')
+%import matplotlib.pyplot as plt
+
+
+    Statistika aktivnosti:
+
+    <table border="1", align="center">
+        <tr>
+              <th>
+                Plavanje
+              </th>
+              <th>
+                Kolesarjenje
+              </th>
+              <th>
+                Tek
+              </th>
+        <tr>
+        % for element in tabela:
+            <td>
+            {{element}}
+            </td>
+        % end
+        </tr>
+    </table>
+
+    <img src="../slike/pita.png" alt = 'Pie CHart'>
+
+    <br>
+
+    Najdaljša plavalna aktivnost je:
+    
+    <br>
+
+    % if najdaljsi[0][0] == 'Zaporedna številka':
+      {{"Ni vnesene plavalne aktivnosti"}}
+
+    % else:
+    <table border="1", align="center">
+      % for element in najdaljsi[0]:
+      <td>
+        {{element}}
+      </td>
+      % end
+    </table>  
+    % end
+    <br>
+
+    Najdaljša kolesarska aktivnost je:
+    
+    <br>
+
+    % if najdaljsi[1][0] == 'Zaporedna številka':
+    {{"Ni vnesene kolesarske aktivnosti"}}
+
+    % else:
+    <table border="1", align="center">
+    % for element in najdaljsi[1]:
+      <td>
+        {{element}}
+      </td>
+      % end
+    </table>  
+    %end
+    
+    <br>
+
+    Najdaljša tekaška aktivnost je:
+    
+    <br>
+
+    % if najdaljsi[2][0] == 'Zaporedna številka':
+    {{print("Ni vnesene tekaške aktivnosti")}}
+
+    % else:
+    <table border="1", align="center">
+    % for element in najdaljsi[2]:
+      <td>
+        {{element}}
+      </td>
+      % end
+    </table>  
+    % end

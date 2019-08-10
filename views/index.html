@@ -1,0 +1,44 @@
+% rebase('base.html')
+
+    Sledilec aktivnosti omogoča enostavno beleženje in pregled aktivnosti v kar treh športih:
+    <br><br>
+        Plavanje
+    <br>
+        Kolesarjenje
+    <br>
+        Tek
+    <br>
+    <br>
+
+    Če prvič uporabljaš aplikacijo ali pa želiš izbrisati vse dosedanje podatke,  izberi <b>Ustvari tabelo.</b>
+    <br>
+    Z klikom na gumb <b> Dodaj aktivnost </b>, lahko dodaš novo aktivnost v svojo tabelo.
+    <br>
+    Z klikom na gumb <b> Zgodovina aktivnosti </b>, si lahko ogledaš dosedanje vnesene aktivnosti.
+    <br>
+    Podrobnejša statistika, je dostopna z klikom na gumb <b> Statistika aktivnosti </b>.
+
+  <br>
+
+  <form action="/ustvari/" method="GET">
+    <button type="submit"> Ustvari tabelo </button>
+  </form>
+  
+  
+  <br>
+
+  <form action="/dodaj/" method="GET">
+    <button type="submit"> Dodaj aktivnost </button>
+  </form>
+  
+  <br>
+  
+  <form action="/zgodovina/" method="GET">
+    <button type="submit"> Zgodovina aktivnosti </button>
+  </form>
+
+  <br>
+
+  <form action="/statistika/" method = "GET">
+    <button type="submit"> Statistika aktivnosti </button>
+  </form>

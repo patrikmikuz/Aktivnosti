@@ -1,0 +1,55 @@
+% rebase('base.html')
+
+    Zgodovina aktivnosti:
+
+    <br>
+    
+<table border="1", align="center">
+  <tr>
+  % for element in tabela[0]:
+        <th>
+          {{element}}
+        </th>
+  % end
+  </tr>
+  % for vrstica in tabela[1:]:
+    <tr>
+      % for element in vrstica:
+        <td>
+          {{element}}
+        </td>
+      % end
+    </tr>
+  % end
+</table>
+
+<br>
+<br>
+
+<form action="/zgodovina_plavanje/" method="GET">
+  <button type="submit"> Oglej si zgodovino plavalnih aktivnosti </button>
+</form>
+
+<br>
+
+<form action="/zgodovina_kolesarjenje/" method="GET">
+  <button type="submit"> Oglej si zgodovino kolesarskih aktivnosti </button>
+</form>
+
+<br>
+
+<form action="/zgodovina_tek/" method="GET">
+  <button type="submit"> Oglej si zgodovino tekaških aktivnosti </button>
+</form>
+
+<br>
+
+<form action="/" method="GET">
+  <button type="submit"> Nazaj na začetek </button>
+</form>
+
+<br>
+
+<form action = "/izbris/" method="GET">
+  <button type = "submit"> Izbriši aktivnost </button>
+</form>

@@ -1,0 +1,53 @@
+% rebase('base.html')
+
+    Zgodovina kolesarskih aktivnosti:
+
+    <br>
+    
+<table border="1", align="center">
+  <tr>
+  % for element in tabela[0][1:]:
+        <th>
+          {{element}}
+        </th>
+  % end
+  </tr>
+  % for vrstica in tabela[1:]:
+  % if vrstica[2] == 'Kolesarjenje':
+    <tr>
+      % for element in vrstica[1:]:
+        <td>
+          {{element}}
+        </td>
+      % end
+    </tr>
+  % end
+  % end
+</table>
+
+
+<br>
+<br>
+
+<form action="/zgodovina_plavanje/" method="GET">
+  <button type="submit"> Oglej si zgodovino plavalnih aktivnosti </button>
+</form>
+
+<br>
+
+<form action="/zgodovina_tek/" method="GET">
+  <button type="submit"> Oglej si zgodovino tekaških aktivnosti</button>
+</form>
+
+<br>
+
+<form action="/zgodovina/" method="GET">
+  <button type="submit"> Oglej si zgodovino vseh aktivnosti </button>
+</form>
+
+<br>
+
+<form action="/" method="GET">
+  <button type="submit"> Nazaj na začetek </button>
+</form>
+

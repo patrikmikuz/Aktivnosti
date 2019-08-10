@@ -1,0 +1,34 @@
+% rebase('base.html')
+
+    Dodaj podatke o aktivnosti:
+  
+    <br>
+
+  <form action="/dodano/" method = "POST">
+    <br>
+    Datum: <input type="date" data-date="" data-date-format="DD MMMM YYYY" name = "datum_kdaj" required valeu = today()>
+    <br>
+    Sport: <select name = "sport" required>
+    <option name = "Plavanje">Plavanje</option> 
+    <option name = "Kolesarjenje">Kolesarjenje</option>
+    <option name = "Tek">Tek</option>
+    </select>      
+    <br>
+    Opravljena razdalja: <input type="number" step = '0.01' min = "0"
+    name = "razdalja"  placeholder="Plavanje v metrih, tek in kolesarjenje v kilometrih"  required>
+    <br>
+    Ura: <input type = "number" name = "ura" min = "0" max = "24" value = "0" required>
+    <br>
+    Minuta: <input type = "number" name = "minuta" min = "0" max = "60" required>
+    <br>
+    Sekunda: <input type = "number" name = "sekunda" min = "0" max = "60" required>
+    <br>
+    Vrsta: <select name = "vrsta" required>
+    <br>      
+     <option name = "trening">Trening</option>
+    <option name = "tekma">Tekma</option>
+    </select>
+   <br> 
+    <button type="submit"> Dodaj aktivnost </button>
+  </form>
+
