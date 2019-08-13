@@ -15,7 +15,7 @@
   % for vrstica in tabela[1:]:
   %   if vrstica[2] == 'Plavanje':
     <tr>
-      % for element in vrstica[1:]:
+      % for element in vrstica[1:-2]:
         <td>
           {{element}}
         </td>
@@ -46,8 +46,4 @@
 </form>
 
 <br>
-
-<form action="/" method="GET">
-  <button type="submit"> Nazaj na začetek </button>
-</form>
 

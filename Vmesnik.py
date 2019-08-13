@@ -4,9 +4,24 @@ import json
 import datetime
 import matplotlib.pyplot as plt
 
+@Bottle.route('slike/<picture>')
+def server_static(picture):
+    return Bottle.static_file(picture, root='slike/')
+
+
+
 @Bottle.get("/")
 def domaca_stran():
-    Model.pita(sizes = Model.nalozi_iz_datoteke('datoteke/statistika.json'))
+    try: stevec
+    except NameError:
+         None
+    else: 
+        stevec = 0
+    print(stevec)
+    #Model.pita(sizes = Model.nalozi_iz_datoteke('datoteke/statistika.json'), stevec)
+    #stevec += 1
+    #Model.histogram(seznam = Model.nalozi_iz_datoteke('datoteke/aktivnosti.json'), stevec)
+    #stevec += 1
     return Bottle.template("index.html")
 
 @Bottle.get("/ustvari/")
@@ -17,10 +32,8 @@ def ustvari():
 def ustvarjeno():
     tabela_aktivnosti = [["Zaporedna številka", "Datum", "Šport", "Razdalja", "Čas", "Tempo", "Vrsta"]]
     statistika = [0, 0, 0]
-    teden_leto = []
     Model.zapis_v_datoteko('datoteke/aktivnosti.json', tabela_aktivnosti)
     Model.zapis_v_datoteko('datoteke/statistika.json', statistika)
-    Model.zapis_v_datoteko('datoteke/teden_leto.json', teden_leto)
     return Bottle.template("ustvarjeno.html")
 
 @Bottle.get("/dodaj/")
@@ -37,7 +50,8 @@ def dodano():
     minuta = int(Bottle.request.forms.getunicode("minuta"))
     sekunda = int(Bottle.request.forms.getunicode("sekunda"))
     vrsta = Bottle.request.forms.getunicode("vrsta")
-    nova_aktivnost = Model.Aktivnost(datum, sport, razdalja, ura, minuta, sekunda, vrsta)
+    komentar = Bottle.request.forms.getunicode("komentar")
+    nova_aktivnost = Model.Aktivnost(datum, sport, razdalja, ura, minuta, sekunda, vrsta, komentar)
     tabela = Model.nalozi_iz_datoteke('datoteke/aktivnosti.json')
     statistika = Model.nalozi_iz_datoteke('datoteke/statistika.json')
     statistika.append(nova_aktivnost.sport)
@@ -78,10 +92,6 @@ def dodano():
 
     Model.zapis_v_datoteko('datoteke/aktivnosti.json', nova_tabela)
 
-    teden_leto = Model.nalozi_iz_datoteke('datoteke/teden_leto.json')
-    teden_leto.append([nova_aktivnost.leto, nova_aktivnost.teden, nova_aktivnost.sport])
-    Model.zapis_v_datoteko('datoteke/teden_leto.json', teden_leto)
-
     return Bottle.template("dodano.html", besedilo = tekst)
 
 
@@ -105,8 +115,8 @@ def zgodovina_tek():
 def statistika():
     sizes = Model.nalozi_iz_datoteke('datoteke/statistika.json')
     najdaljsi = Model.najdaljse('datoteke/aktivnosti.json')
-    print(najdaljsi)
     return Bottle.template("statistika.html", tabela = sizes, najdaljsi = najdaljsi)
+
 
 @Bottle.get('slike/<ime>')
 def vrni_slike(ime):
@@ -121,7 +131,6 @@ def izbrisano():
     tabela = Model.nalozi_iz_datoteke('datoteke/aktivnosti.json')
     stevilo = int(Bottle.request.forms.getunicode("zap"))
     seznam = Model.nalozi_iz_datoteke('datoteke/statistika.json')
-    print(tabela[stevilo][2])
     if tabela[stevilo][2] == 'Plavanje':
         seznam[0] -= 1
     elif tabela[stevilo][2] == 'Kolesarjenje':

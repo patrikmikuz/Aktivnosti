@@ -14,8 +14,9 @@
   </tr>
   % for vrstica in tabela[1:]:
     <tr>
-      % for element in vrstica:
-        <td>
+      % for element in vrstica[:-3]:
+      % 
+        <td title = {{vrstica[-1]}}>
           {{element}}
         </td>
       % end
@@ -40,12 +41,6 @@
 
 <form action="/zgodovina_tek/" method="GET">
   <button type="submit"> Oglej si zgodovino tekaških aktivnosti </button>
-</form>
-
-<br>
-
-<form action="/" method="GET">
-  <button type="submit"> Nazaj na začetek </button>
 </form>
 
 <br>

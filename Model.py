@@ -5,7 +5,7 @@ from PIL import Image
 import os
 
 class Aktivnost:
-    def __init__(self, datum, sport, razdalja, ura, minuta, sekunda, vrsta = "trening"):
+    def __init__(self, datum, sport, razdalja, ura, minuta, sekunda, vrsta, komentar):
         self.datum = datum
         self.sport = sport
         self.razdalja = razdalja
@@ -19,7 +19,7 @@ class Aktivnost:
         leto = datetime.date(int(datum_priprava[0]), int(datum_priprava[1]), int(datum_priprava[2])).isocalendar()[0]
         self.teden = teden
         self.leto = leto
-
+        self.komentar = komentar
 
     def pretvori_cas(self):
         return (str(self.ura) + ":" + str(self.minuta) + ":" + str(self.sekunda))
@@ -55,13 +55,13 @@ class Aktivnost:
     def pripravi_za_zapis(self):
         if self.sport == "Plavanje":
             return [self.datum, self.sport, str(self.razdalja) + " m", 
-            self.pretvori_cas(), str(self.tempo()) + " min / 100 m", self.vrsta]
+            self.pretvori_cas(), str(self.tempo()) + " min / 100 m", self.vrsta, self.teden, self.leto, self.komentar.replace(" ", "_")]
         if self.sport == "Kolesarjenje":
             return [self.datum, self.sport, str(self.razdalja) + " km", 
-            self.pretvori_cas(), str(self.tempo()) + " km / h", self.vrsta]
+            self.pretvori_cas(), str(self.tempo()) + " km / h", self.vrsta, self.teden, self.leto, self.komentar.replace(" ", "_")]
         if self.sport == "Tek":
             return [self.datum, self.sport, str(self.razdalja) + " km", 
-            self.pretvori_cas(), str(self.tempo()) + " min / km", self.vrsta]
+            self.pretvori_cas(), str(self.tempo()) + " min / km", self.vrsta, self.teden, self.leto, self.komentar.replace(" ", "_")]
     
 def zapis_v_datoteko(datoteka1, tabela):
     with open(datoteka1, 'w') as dat1:
@@ -74,16 +74,39 @@ def nalozi_iz_datoteke(datoteka):
         zapis = json.load(dat)
     return zapis
 
-def pita(sizes):
+def pita(sizes, stevec):
     labels = ["Plavanje", "Kolesarjenje", "Tek"]
     colors = ["skyblue", "yellowgreen", "lightcoral"]
-    plt.pie(sizes, colors = colors, labels = labels, autopct='%1.1f%%')
-    
+
     if os.path.exists('slike/pita.png'):
         os.remove('slike/pita.png')
-
+    plt.figure(stevec)
+    plt.pie(sizes, colors = colors, labels = labels, autopct='%1.1f%%')
     plt.savefig('slike/pita.png')
-   
+
+def histogram(seznam, stevec):
+    labels = ['Plavanje', 'Kolesarjenje', 'Tek']
+    colors = ['lightskyblue', 'yellowgreen', 'lightcoral']
+    
+    if os.path.exists('slike/hist.png'):
+        os.remove('slike/hist.png')
+
+    danes = [datetime.datetime.today().isocalendar()[0], datetime.datetime.today().isocalendar()[1]]
+    aktivnosti = nalozi_iz_datoteke('datoteke/aktivnosti.json')
+    urejeno = [[],[],[]]
+    for element in aktivnosti[1:]:
+        if element[2] == 'Plavanje':
+            urejeno[0].append(element[7])
+        elif element[2] == 'Kolesarjenje':
+            urejeno[1].append(element[7])
+        else:
+            urejeno[2].append(element[7])
+    plt.figure(stevec)
+    plt.hist(urejeno, stacked = True, label = labels)
+    plt.legend()
+    plt.savefig('slike/hist.png')
+
+
 def najdaljse(datoteka):
     with open(datoteka) as dat:
         zapis = json.load(dat)
@@ -93,8 +116,8 @@ def najdaljse(datoteka):
     indeks_kolo = 0
     najdaljsi_tek = 0
     indeks_tek = 0
+    indeks = 1
     for aktivnost in zapis[1:]:
-        indeks = 1
         if aktivnost[2] == "Plavanje" and float(aktivnost[3].strip(" ")[0]) > najdaljse_plavanje:
             indeks_plavanje = indeks
             najdaljse_plavanje = float(aktivnost[3].strip(" ")[0])
