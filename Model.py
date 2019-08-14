@@ -74,24 +74,24 @@ def nalozi_iz_datoteke(datoteka):
         zapis = json.load(dat)
     return zapis
 
-def pita(sizes, stevec):
+def pita(sizes):
     labels = ["Plavanje", "Kolesarjenje", "Tek"]
     colors = ["skyblue", "yellowgreen", "lightcoral"]
 
     if os.path.exists('slike/pita.png'):
         os.remove('slike/pita.png')
-    plt.figure(stevec)
+    plt.figure()
     plt.pie(sizes, colors = colors, labels = labels, autopct='%1.1f%%')
     plt.savefig('slike/pita.png')
+    plt.clf()
 
-def histogram(seznam, stevec):
+def histogram(seznam):
     labels = ['Plavanje', 'Kolesarjenje', 'Tek']
     colors = ['lightskyblue', 'yellowgreen', 'lightcoral']
     
     if os.path.exists('slike/hist.png'):
         os.remove('slike/hist.png')
 
-    danes = [datetime.datetime.today().isocalendar()[0], datetime.datetime.today().isocalendar()[1]]
     aktivnosti = nalozi_iz_datoteke('datoteke/aktivnosti.json')
     urejeno = [[],[],[]]
     for element in aktivnosti[1:]:
@@ -101,10 +101,11 @@ def histogram(seznam, stevec):
             urejeno[1].append(element[7])
         else:
             urejeno[2].append(element[7])
-    plt.figure(stevec)
+    plt.figure()
     plt.hist(urejeno, stacked = True, label = labels)
     plt.legend()
     plt.savefig('slike/hist.png')
+    plt.clf()
 
 
 def najdaljse(datoteka):

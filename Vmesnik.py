@@ -4,24 +4,14 @@ import json
 import datetime
 import matplotlib.pyplot as plt
 
-@Bottle.route('slike/<picture>')
+@Bottle.get('/slike/<picture>')
 def server_static(picture):
-    return Bottle.static_file(picture, root='slike/')
-
-
+    return Bottle.static_file(picture, root='/slike/')
 
 @Bottle.get("/")
 def domaca_stran():
-    try: stevec
-    except NameError:
-         None
-    else: 
-        stevec = 0
-    print(stevec)
-    #Model.pita(sizes = Model.nalozi_iz_datoteke('datoteke/statistika.json'), stevec)
-    #stevec += 1
-    #Model.histogram(seznam = Model.nalozi_iz_datoteke('datoteke/aktivnosti.json'), stevec)
-    #stevec += 1
+    Model.pita(sizes = Model.nalozi_iz_datoteke('datoteke/statistika.json'))
+    Model.histogram(seznam = Model.nalozi_iz_datoteke('datoteke/aktivnosti.json'))
     return Bottle.template("index.html")
 
 @Bottle.get("/ustvari/")
@@ -144,6 +134,30 @@ def izbrisano():
         nova_tabela.append([i] + tabela[i][1:])
     Model.zapis_v_datoteko('datoteke/aktivnosti.json', nova_tabela)
     return Bottle.template("izbrisano.html")
+
+@Bottle.get('/kateri-mesec/')
+def zahtevaj_mesec():
+    return (Bottle.template("kateri_mesec.html"))
+
+@Bottle.post('/zgodovina-datum/')
+def pokazi_mesec():
+    mesec = int(Bottle.request.forms.getunicode("mesec"))
+    tabela = Model.nalozi_iz_datoteke('datoteke/aktivnosti.json')
+    zaporedne = []
+    for element in tabela[1:]:
+        print(element[1].split('-'))
+        if int((element[1].split('-'))[1]) == mesec:
+            zaporedne.append(element[0])
+    nova_tabela = [["Zaporedna številka", "Datum", "Šport", "Razdalja", "Čas", "Tempo", "Vrsta"]]
+    for i in zaporedne:
+        nova_tabela.append(tabela[i])
+    return Bottle.template('zgodovina-datum.html', tabela = nova_tabela)
+
+
+
+
+
+
 
 Bottle.run(reloader = "True", debug = "True")
 

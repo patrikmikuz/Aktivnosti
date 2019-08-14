@@ -1,0 +1,25 @@
+% rebase('base.html')
+
+    Zgodovina aktivnosti:
+
+    <br>
+    
+<table border="1", align="center">
+  <tr>
+  % for element in tabela[0]:
+        <th>
+          {{element}}
+        </th>
+  % end
+  </tr>
+  % for vrstica in tabela[1:]:
+    <tr>
+      % for element in vrstica[:-3]:
+      % 
+        <td title = {{vrstica[-1]}}>
+          {{element}}
+        </td>
+      % end
+    </tr>
+  % end
+</table>
