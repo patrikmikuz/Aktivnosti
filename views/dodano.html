@@ -1,15 +1,53 @@
 % rebase('base.html')
 
-    {{ besedilo }}
-  
-  <form action="/" method = "GET">
-    <button type="submit"> Nazaj na začetek </button>
-  </form>
+<meta http-equiv="refresh" content="3; url=/zgodovina/">
 
-  <form action = "/dodaj/" method = "GET">
-      <button type = "submit"> Dodaj še eno aktivnost </button>
-  </form>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Domov</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ustvari/">Ustvari novo tabelo</a>
+             </li>
+            <li class="nav-item">
+             <a class="nav-link active" href="/dodaj/">Dodaj aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/izbris/">Izbriši aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/zgodovina/">Zgodovina aktivnosti</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link " href="/izberi/">Zgodovina aktivnosti po filtrih</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link " href="/statistika/">Statistika</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <form action = "/zgodovina/" method = "GET">
-        <button type = "submit"> Oglej si zgodovino aktivnosti </button>
-    </form>
+
+
+<br>
+<div class="container">
+  Zabeležena aktivnost je:
+  <br>
+  <table border="1", align="center" class='table table-hover table-sm'>
+    <tbody align="center">
+      <tr>
+        % for element in aktivnost[:-1]:
+          <td title = {{aktivnost[-1]}}>
+            {{element}}
+          </td>
+        % end
+          <td>
+            {{aktivnost[-1]}}
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

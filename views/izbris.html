@@ -1,14 +1,42 @@
 % rebase('base.html')
 
-    Za izbris aktivnosti vpiši zaporedno številko aktivnosti:
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Domov</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ustvari/">Ustvari novo tabelo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/dodaj/">Dodaj aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/izbris/">Izbriši aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/zgodovina/">Zgodovina aktivnosti</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/izberi/">Zgodovina aktivnosti po filtrih</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link " href="/statistika/">Statistika</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <br>
+<br>
 
-    <br>
-
-    <form action="/izbrisano/" method = "POST">
-        <br>
-    Zaporedna številka: <input type="number" name = "zap" min = 1>
-        <br>
-        <button type="submit"> Izbriši aktivnost </button>
-    </form>
+<div class="container">
+    <div class="col-md-auto">
+            <form action="/izbrisano/" method = "POST">
+            <br>
+            Zaporedna številka: <input type = "number" class="form-control" name = "zap" min = 1>
+            <br>
+            <button type="submit" class="btn btn-outline-danger btn-lg btn-block"> Izbriši aktivnost </button>
+        </form>
+    </div>
+</div>

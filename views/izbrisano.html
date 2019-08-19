@@ -1,9 +1,53 @@
 % rebase('base.html')
 
-<meta http-equiv="refresh" content="5; url=/zgodovina/">
+<meta http-equiv="refresh" content="3; url=/zgodovina/">
 
-    Aktivnost je bila izbrisana. 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Domov</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ustvari/">Ustvari novo tabelo</a>
+             </li>
+            <li class="nav-item">
+             <a class="nav-link " href="/dodaj/">Dodaj aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/izbris/">Izbriši aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/zgodovina/">Zgodovina aktivnosti</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link " href="/izberi/">Zgodovina aktivnosti po filtrih</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link " href="/statistika/">Statistika</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
+
+<div class="container">
+    Izbrisana aktivnost je:
     <br>
+    <table border="1", align="center" class='table table-hover table-sm'>
+        <tbody align="center">
+          <tr>
+            % for element in aktivnost[:-3]:
+              <td>
+                {{element}}
+              </td>
+            % end
+              <td>
+                {{aktivnost[-1]}}
+              </td>
+          </tr>
+        </tbody>
+    </table>
+</div>
 
-    Avtomatsko boš preusmerjen nazaj na zgodovino aktivnosti.
+    

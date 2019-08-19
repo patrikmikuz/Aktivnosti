@@ -13,34 +13,32 @@
              <a class="nav-link " href="/dodaj/">Dodaj aktivnost</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="/izbris/">Izbriši aktivnost</a>
+                <a class="nav-link" href="/izbris/">Izbriši aktivnost</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="/zgodovina/">Zgodovina aktivnosti</a>
+                <a class="nav-link " href="/zgodovina/">Zgodovina aktivnosti</a>
             </li>
             <li class="nav-item">
-                 <a class="nav-link " href="/izberi/">Zgodovina aktivnosti po filtrih</a>
+                 <a class="nav-link active" href="/izberi/">Zgodovina aktivnosti po filtrih</a>
             </li>
             <li class="nav-item">
                <a class="nav-link " href="/statistika/">Statistika</a>
             </li>
         </ul>
     </div>
-</nav>  
+</nav>
 
-
-
+<br>
 <div class="container">
-  <br>
 <table border="1", align="center" class='table table-hover table-sm'>
   <thead class="thead-light" align="center">
-    <tr>
-      % for element in tabela[0]:
-        <th>
-          {{element}}
-        </th>
-      % end
-    </tr>
+  <tr>
+    % for element in tabela[0]:
+      <th>
+        {{element}}
+      </th>
+    % end
+  </tr>
   </thead>
   <tbody align="center">
   % for vrstica in tabela[1:]:
@@ -56,5 +54,3 @@
   </tbody>
 </table>
 </div>
-<br>
-<br>

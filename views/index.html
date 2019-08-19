@@ -1,50 +1,48 @@
 % rebase('base.html')
 
-    Sledilec aktivnosti omogoča enostavno beleženje in pregled aktivnosti v kar treh športih:
-    <br><br>
-        Plavanje
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+            <a class="nav-link active" href="/">Domov</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ustvari/">Ustvari novo tabelo</a>
+             </li>
+            <li class="nav-item">
+             <a class="nav-link " href="/dodaj/">Dodaj aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/izbris/">Izbriši aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/zgodovina/">Zgodovina aktivnosti</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link " href="/izberi/">Zgodovina aktivnosti po filtrih</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link " href="/statistika/">Statistika</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="container">
+<div class="row">
+  <div class="col-sm-7">
+    Spletna aplikacija Sledilec aktivnosti je namenjena vsem amaterskim in "wanna be" profesionalim športnikom, ki se ukvarjajo s plavanjem, 
+    kolesarjenjem in/ali tekom. Zato je lahko odličen pripomoček za spremljanje in beleženje treningov tudi za triatlonce, in seveda 
+    ugotavljanje napredovanja v posamezni disciplini posebej. 
     <br>
-        Kolesarjenje
+    Po vsakem treningu je potrebno le vnesti čas treninga in opravljeno razdaljo ter aktivnost. Vsi treningni so hitro dostopni, prav tako 
+    pa je mogoče tudi iskanje po mesecih, tekmah in disciplini. Na koncu vsakega meseca je tudi izračunana skupna opralvjena razdalja v 
+    posamezni disciplini in število opravljenih aktivnosti.
     <br>
-        Tek
-    <br>
-    <br>
-
-    Če prvič uporabljaš aplikacijo ali pa želiš izbrisati vse dosedanje podatke,  izberi <b>Ustvari tabelo.</b>
-    <br>
-    Z klikom na gumb <b> Dodaj aktivnost </b>, lahko dodaš novo aktivnost v svojo tabelo.
-    <br>
-    Z klikom na gumb <b> Zgodovina aktivnosti </b>, si lahko ogledaš dosedanje vnesene aktivnosti.
-    <br>
-    Podrobnejša statistika, je dostopna z klikom na gumb <b> Statistika aktivnosti </b>.
-
-  <br>
-
-  <form action="/ustvari/" method="GET">
-    <button type="submit"> Ustvari tabelo </button>
-  </form>
-  
-  
-  <br>
-
-  <form action="/dodaj/" method="GET">
-    <button type="submit"> Dodaj aktivnost </button>
-  </form>
-  
-  <br>
-  
-  <form action="/zgodovina/" method="GET">
-    <button type="submit"> Zgodovina aktivnosti </button>
-  </form>
-
-  <br>
-
-  <form action="/statistika/" method = "GET">
-    <button type="submit"> Statistika aktivnosti </button>
-  </form>
-
-  <br>
-
-  <form action="/zgodovina-datum/" method = "GET">
-    <button type="submit"> Zgodovina po datumih </button>
-  </form>
+  </div>
+  <div class="col-sm-5">
+    <img src="../static/swimbikerun.jpg" height="350" width="500" align="middle">
+  </div>
+</div>
+</div>
+</div>

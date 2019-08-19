@@ -1,0 +1,71 @@
+% rebase('base.html')
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Domov</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ustvari/">Ustvari novo tabelo</a>
+             </li>
+            <li class="nav-item">
+             <a class="nav-link " href="/dodaj/">Dodaj aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/izbris/">Izbriši aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/zgodovina/">Zgodovina aktivnosti</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link active" href="/izberi/">Zgodovina aktivnosti po filtrih</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link " href="/statistika/">Statistika</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<br>
+
+<div class="container">
+  <div class="col-md-auto">
+    <form action="/zgodovina-izberi/" method = "POST"> 
+      Šport:
+        <br>
+          <input type="radio" name="sport" value="Plavanje">Plavanje
+          <input type="radio" name="sport" value="Kolesarjenje">Kolesarjenje
+          <input type="radio" name="sport" value="Tek">Tek</input>
+        <br>
+      Vrsta: 
+        <br>
+          <input type="radio" name="vrsta" value="Trening">Trening
+          <input type="radio" name="vrsta" value="Tekma">Tekma
+        <br>
+      Mesec: 
+      <br>
+            <input type="radio" name="mesec" value="01">Januar
+            <input type="radio" name="mesec" value="07">Julij
+            <br>
+            <input type="radio" name="mesec" value="02">Februar
+            <input type="radio" name="mesec" value="08">Avgust
+            <br>
+            <input type="radio" name="mesec" value="03">Marec
+            <input type="radio" name="mesec" value="09">September
+            <br>
+            <input type="radio" name="mesec" value="04">April
+            <input type="radio" name="mesec" value="10">Oktober
+            <br>
+            <input type="radio" name="mesec" value="05">Maj
+            <input type="radio" name="mesec" value="11">November
+            <br>
+            <input type="radio" name="mesec" value="06">Junij
+            <input type="radio" name="mesec" value="12">December
+            <br>
+      <button type="submit" class="btn btn-outline-info btn-lg btn-block"> Poišči </button>
+    </form>
+  </div>
+</div>
+  

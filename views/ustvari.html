@@ -1,21 +1,50 @@
 % rebase('base.html')
 
-    Ali si prepričan da želiš ustvariti novo tabelo?
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Domov</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/ustvari/">Ustvari novo tabelo</a>
+             </li>
+            <li class="nav-item">
+             <a class="nav-link " href="/dodaj/">Dodaj aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/izbris/">Izbriši aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/zgodovina/">Zgodovina aktivnosti</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link " href="/izberi/">Zgodovina aktivnosti po filtrih</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link " href="/statistika/">Statistika</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <br>
 
-    S tem se stara tabela do končno izbriše in vsi vneseni podatki so izgubljeni.
-
-    <br>
-
-<form action="/ustvarjeno/" method="GET">
-  <button type="submit"> Da </button>
-</form>
 
 <br>
-
-<form action="/" method="GET">
-  <button type="submit"> Ne </button>
-</form>
-
+<div class="container">
+  <div class="col-sm-auto">
+    Ali si prepričan da želiš ustvariti novo tabelo?
+    <br>
+    S tem se stara tabela dokončno izbriše in vsi vneseni podatki so izgubljeni.
+    <br>
+    <br>
+    <form action="/ustvarjeno/" method="GET">
+      <button type="submit" class="btn btn-outline-success btn-lg btn-block"> Da </button>
+    </form>
+    <br>
+    <form action="/" method="GET">
+      <button type="submit" class="btn btn-outline-danger btn-lg btn-block"> Ne </button>
+    </form>
+  </div>
+</div>      
 

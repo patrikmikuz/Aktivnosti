@@ -1,36 +1,78 @@
 % rebase('base.html')
 
-    Dodaj podatke o aktivnosti:
-  
-    <br>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Domov</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ustvari/">Ustvari novo tabelo</a>
+             </li>
+            <li class="nav-item">
+             <a class="nav-link active" href="/dodaj/">Dodaj aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/izbris/">Izbriši aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/zgodovina/">Zgodovina aktivnosti</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link " href="/izberi/">Zgodovina aktivnosti po filtrih</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link " href="/statistika/">Statistika</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-  <form action="/dodano/" method = "POST">
+<div class="container">
+  <div class="row">
+  <div class="col-md-5">
+    <form action="/dodano/" method = "POST">
     <br>
-    Datum: <input type="date" data-date="" data-date-format="DD MMMM YYYY" name = "datum_kdaj" required valeu = today()>
+    Datum: <input type="date" class="form-control" data-date="" data-date-format="DD MMMM YYYY" name = "datum_kdaj" required>
     <br>
-    Sport: <select name = "sport" required>
-    <option name = "Plavanje">Plavanje</option> 
-    <option name = "Kolesarjenje">Kolesarjenje</option>
-    <option name = "Tek">Tek</option>
-    </select>      
+    Šport: 
+    <ul>
+      <li>
+          <input type="radio" name="sport" value="Plavanje" required>Plavanje
+      </li>
+      <li>
+          <input type="radio" name="sport" value="Kolesarjenje">Kolesarjenje
+      </li>
+      <li>
+          <input type="radio" name="sport" value="Tek">Tek</input>
+      </li>
+    </ul>
     <br>
-    Opravljena razdalja: <input type="number" step = '0.01' min = "0"
+    Opravljena razdalja: <input type="number" class="form-control" step = '0.01' min = "0"
     name = "razdalja"  placeholder="Plavanje v metrih, tek in kolesarjenje v kilometrih"  required>
     <br>
-    Ura: <input type = "number" name = "ura" min = "0" max = "24" value = "0" required>
+    Trajanje aktivnosti: <input value="00:00:00" type="time" step="1" required name="trajanje">
     <br>
-    Minuta: <input type = "number" name = "minuta" min = "0" max = "60" required>
-    <br>
-    Sekunda: <input type = "number" name = "sekunda" min = "0" max = "60" required>
-    <br>
-    Vrsta: <select name = "vrsta" required>
-    <br>      
-     <option name = "trening">Trening</option>
-    <option name = "tekma">Tekma</option>
-    </select>
+    Vrsta: 
+    <ul>
+      <li>
+        <input type="radio" name="vrsta" value="Trening" required>Trening
+      </li>
+      <li>
+        <input type="radio" name="vrsta" value="Tekma">Tekma
+      </li>
+    </ul>
+    
    <br> 
-    Komentar: <input name = "komentar"  placeholder="Vnesi komentar">
+    Komentar: <input  class="form-control" name = "komentar"  placeholder="Vnesi komentar">
     <br>
-    <button type="submit"> Dodaj aktivnost </button>
+    <button type="submit" class="btn btn-outline-success btn-lg btn-block"> Dodaj aktivnost </button>
   </form>
+</div>
+<div class="col-md-7">
+  <br>
+  <img src="../static/about-image.png">
+</div>
+</div>
+</div>
 

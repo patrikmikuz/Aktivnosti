@@ -1,69 +1,23 @@
+    
 <!DOCTYPE html>
 <html lang="sl">
 
 <head>
     <meta charset="utf-8" />
     <title>Sledilec aktivnosti</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-    body{
-        text-align:center;
-        background-color:rgb(76, 139, 179);
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 15pt;
+    body {background-image:url("../static/fourth-bg.png");
+        color: white;
+        text-align: justify;
     }
-
+    li {
+        list-style-type: none
+    }
     h1{
         text-align: center;
-        color:black;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 20; 
-    }
-    ul{
-        text-align:center;
-        list-style-type: none;
-        font-family: "Arial";
-        font-size: 15pt;
-    }
-    button{
-        background-color: white;
-        border: 1px solid black;
-        text-align: center;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 10 pt;
-        padding: 4px 32px;
-    }
-    #domov{
-        background-color: white;
-        border: 1px solid black;
-        text-align: center;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 10 pt;
-        padding: 4px 32px;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-    #domov:hover{
-        background-color:lightgray;
-    }
 
-    button:hover{
-        background-color:lightgray;
     }
-    input{
-        width: 15;
-        height: 10%;
-        text-align: center;
-        border: 2px solid;
-    }
-    table, th, td{
-        text-align: center;
-        border: 1px solid black;
-    }
-    th{
-        background-color: lightgray
-    }
-    
     </style>
 </head>
 
@@ -71,13 +25,7 @@
 
   <h1>Sledilec aktivnosti</h1>
 
-    <div>
-        {{!base}}
-    </div>
-
-    <form action="/" method="GET">
-        <button type="submit" id = "domov"> Nazaj na začetek </button>
-    </form>
+    {{!base}}
 </body>
 
 

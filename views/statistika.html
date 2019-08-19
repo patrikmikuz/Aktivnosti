@@ -1,83 +1,129 @@
 % rebase('base.html')
-%import matplotlib.pyplot as plt
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Domov</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ustvari/">Ustvari novo tabelo</a>
+             </li>
+            <li class="nav-item">
+             <a class="nav-link " href="/dodaj/">Dodaj aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/izbris/">Izbriši aktivnost</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/zgodovina/">Zgodovina aktivnosti</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link " href="/izberi/">Zgodovina aktivnosti po filtrih</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link active" href="/statistika/">Statistika</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    Statistika aktivnosti:
-
-    <table border="1", align="center">
-        <tr>
-              <th>
-                Plavanje
-              </th>
-              <th>
-                Kolesarjenje
-              </th>
-              <th>
-                Tek
-              </th>
-        <tr>
-        % for element in tabela:
-            <td>
-            {{element}}
-            </td>
-        % end
-        </tr>
-    </table>
-
-    <img src="../slike/pita.png" alt = 'Pie Chart'>
-
-    <br>
-    <br>
-    Najdaljša plavalna aktivnost je:
-    
-    <br>
-
-    % if najdaljsi[0][0] == 'Zaporedna številka':
-      {{"Ni vnesene plavalne aktivnosti"}}
-
-    % else:
-    <table border="1", align="center">
-      % for element in najdaljsi[0][:-3]:
+<div class="container">
+  <table border="1", align="center" class='table table-hover table-sm'>
+    <thead class="thead-light" align="center">
+      <tr>
+          <th>
+          </th>
+          <th>
+            Plavanje
+          </th>
+          <th>
+            Kolesarjenje
+          </th>
+          <th>
+            Tek
+          </th>
+    </thead>
+    <tbody align='center'>
+    <tr>
       <td>
-        {{element}}
+        Število vnešenih aktivnosti
       </td>
-      % end
-    </table>  
-    % end
-    <br>
-
-    Najdaljša kolesarska aktivnost je:
-    
-    <br>
-
-    % if najdaljsi[1][0] == 'Zaporedna številka':
-    {{"Ni vnesene kolesarske aktivnosti"}}
-
-    % else:
-    <table border="1", align="center">
-    % for element in najdaljsi[1][:-3]:
-      <td>
+      % for element in tabela:
+        <td>
         {{element}}
-      </td>
+        </td>
       % end
-    </table>  
+    </tr>
+  </tbody>
+  </table>
+
+  <br>
+   <img src="../static/pita.png" alt = 'Pie Chart' height="300", width="450" >
+  <br>
+
+
+  <table border="1", align="center" class='table table-hover table-sm'>
+    <thead class="thead-light" align="center">
+      <tr>
+        <th>
+          Mesec
+        </th>
+        <th>
+          Število aktivnosti
+        </th>
+        <th>
+          Število plavanj
+        </th>
+        <th>
+          Preplavana razdalja
+        </th>
+        <th>
+          Število Kolesarjenj
+        </th>
+        <th>
+          Prekolesarjena razdalja
+        </th>
+        <th>
+            Število tekov
+        </th>
+        <th>
+          Pretečena razdalja
+        </th>
+      </tr>
+    </thead>
+    <tbody align="center">
+    %for element in meseci:
+    <tr>
+      %for podelement in element:
+        <td>
+          {{podelement}}
+        </td>
+      %end
+    </tr>
     %end
-    
-    <br>
+  </tbody>
+  </table>
 
-    Najdaljša tekaška aktivnost je:
-    
-    <br>
-
-    % if najdaljsi[2][0] == 'Zaporedna številka':
-    {{print("Ni vnesene tekaške aktivnosti")}}
-
-    % else:
-    <table border="1", align="center">
-    % for element in najdaljsi[2][:-3]:
-      <td>
-        {{element}}
-      </td>
-      % end
-    </table>  
-    % end
+  <br>
+  
+  <table border="1", align="center" class='table table-hover table-sm'>
+    <thead class="thead-light" align="center">
+      <tr>
+        <th colspan="7">
+          Najdaljše aktivnosti
+        </th>
+      </tr>
+    </thead>
+    <tbody align="center">
+    %for i in range(len(najdaljsi)):
+      <tr>
+        %for element in najdaljsi[i][:7]:
+        <td  title = {{najdaljsi[i][-1]}}>
+          {{element}}
+        </td>
+        %end
+      </tr>
+    %end
+  </tbody>
+  </table>
